@@ -3,7 +3,8 @@ import { HashRouter, Route, Routes, Navigate } from 'react-router-dom';
 import Header from '../components/layout/header';
 import Footer from '../components/layout/footer';
 // import '../style/style.scss';
-import './index.css';
+import '../index.css';
+import TopScroll from '../components/button/scrollButton';
 
 const loading = (
   <div className="pt-3 text-center">
@@ -32,23 +33,23 @@ const App = () => {
     <HashRouter>
       <Header />
       <Suspense fallback={loading}>
-        <div className="ml-36 mr-36 bg-green-300">
+        <div className="mx-56">
           <Routes>
             <Route path="/dashboard" element={<Dashboard />} />
             <Route
               path="/mypage"
               element={
-                <PrivateRoute authenticated={isAuthenticated}>
-                  <MyPage />
-                </PrivateRoute>
+                // <PrivateRoute authenticated={isAuthenticated}>
+                <MyPage />
+                // </PrivateRoute>
               }
             />
             <Route
               path="/write"
               element={
-                <PrivateRoute authenticated={isAuthenticated}>
-                  <WritePage />
-                </PrivateRoute>
+                // <PrivateRoute authenticated={isAuthenticated}>
+                <WritePage />
+                // </PrivateRoute>
               }
             />
             {/* <Route
@@ -61,13 +62,14 @@ const App = () => {
           </Routes>
         </div>
       </Suspense>
+      <TopScroll />
       <Footer />
     </HashRouter>
   );
 };
 
-const PrivateRoute = ({ authenticated, children }) => {
-  return authenticated ? children : <Navigate to="/dashboard" />;
-};
+// const PrivateRoute = ({ authenticated, children }) => {
+//   return authenticated ? children : <Navigate to="/dashboard" />;
+// };
 
 export default App;
