@@ -11,7 +11,7 @@ const Header = () => {
             size={24}
           />
           <input
-            className="border-customBlue border-2 pl-12 pr-4 py-2 w-full h-20 text-lg  focus:border-blue-500 rounded-full"
+            className="border-customBlue border-2 pl-12 pr-4 py-3 w-full text-lg  focus:ring-8 focus:ring-blue-100/50  rounded-full"
             placeholder="검색어 입력"
           />
         </div>
