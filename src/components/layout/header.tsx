@@ -5,32 +5,58 @@ import {
   IoIosArrowForward,
   IoIosArrowUp,
 } from 'react-icons/io';
+import { GoogleOAuthProvider } from '@react-oauth/google';
+import useGoogleLogin from '../../components/login/googleLogin';
 
 function Dashboard() {
   const navigate = useNavigate();
   const [login, setLogin] = useState('');
   const [isOpen, setIsOpen] = useState(false);
-
+  // const clientId = process.env.REACT_APP_GOOGLE_CLIENT_ID && '';
   const handleMyPageClick = () => {
     navigate('/mypage');
   };
+  const handleSuccess = (response) => {
+    console.log('Login Success:', response);
+    // 여기서 백엔드로 JWT 토큰을 전송하거나, 로그인 상태를 관리하는 작업을 수행합니다.
+  };
+
+  const handleError = (error) => {
+    console.error('Login Failed:', error);
+  };
+  const GoogleLoginButton = useGoogleLogin(handleSuccess, handleError);
   return (
-    <div className="flex flex-row w-screen justify-between pl-36 pr-36 my-16">
-      <span>Logo</span>
+    <div className="flex flex-row w-screen justify-between px-56  my-16">
+      <span className="flex items-center">Logo</span>
       <span>
         {login ? (
           <span>로그인</span>
         ) : (
           <span>
             <span className="flex flex-row items-center">
-              로그인
+              <GoogleOAuthProvider
+                clientId={
+                  '991237371818-rva7ld7gnbh4l853mqllcqevmcgoldke.apps.googleusercontent.com'
+                }
+              >
+                <div className="App">
+                  <h1>Google Login with React</h1>
+                  <GoogleLoginButton />
+                </div>
+              </GoogleOAuthProvider>
+              <img
+                src={'../../../image/basicImg.png'}
+                alt={''}
+                className="rounded-full w-5 h-5 object-cover my-4 mr-2 "
+              />
+              <span className="mr-1">로그인</span>
               <span onClick={() => setIsOpen(!isOpen)}>
                 {isOpen ? <IoIosArrowUp /> : <IoIosArrowDown />}
               </span>
             </span>
 
             {isOpen && (
-              <div className="absolute top-24 justify-end right-36 border-2 border-slate-200 p-5 rounded-2xl w-44 bg-white">
+              <div className="absolute top-28 justify-end right-36 border-2 border-slate-200 p-5 rounded-2xl w-44 bg-white">
                 <div
                   className="flex items-center justify-between"
                   onClick={handleMyPageClick}
