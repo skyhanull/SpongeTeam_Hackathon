@@ -2,22 +2,36 @@ import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
 import React from 'react';
 
-function MainButton() {
+function MainButton({ title, text }: any) {
   return (
-    <Modal
-      open={open}
-      onClose={handleClose}
-      aria-labelledby="parent-modal-title"
-      aria-describedby="parent-modal-description"
-    >
-      <Box sx={{ ...style, width: 400 }}>
-        <h2 id="parent-modal-title">Text in a modal</h2>
-        <p id="parent-modal-description">
-          Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-        </p>
-        {/* <ChildModal /> */}
-      </Box>
-    </Modal>
+    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+      <div className="bg-white py-6 px-28 rounded-xl shadow-lg relative">
+        <button
+          className="absolute top-2 right-2 text-gray-600"
+          // onClick={handleClose}
+        >
+          &times;
+        </button>
+        <div className="text-xl font-bold my-4 flex justify-center">
+          {title}
+        </div>
+        <p className="mb-6">{text}</p>
+        <div className="flex justify-center my-4 w-full">
+          <button
+            className="bg-white text-gray-500 px-7  mr-6 rounded-3xl border-gray-300"
+            // onClick={handleClose}
+          >
+            취소
+          </button>
+          <button
+            className="bg-blue-500 text-white  px-7  rounded-3xl"
+            // onClick={handleClose}
+          >
+            {'신청'}
+          </button>
+        </div>
+      </div>
+    </div>
   );
 }
 export default MainButton;
