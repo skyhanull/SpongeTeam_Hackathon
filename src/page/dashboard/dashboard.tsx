@@ -18,10 +18,18 @@ function Dashboard() {
 
   //   fetchData();
   // }, []);
+
+  const handleButtonClick = () => {
+    alert('버튼이 클릭되었습니다!');
+  };
+
   return (
     <div>
       <div className="flex justify-center items-center mt-28">
-        <MainButton text={'내가 들은 교육과정 후기 쓰기'} />
+        <MainButton
+          text={'내가 들은 교육과정 후기 쓰기'}
+          click={handleButtonClick}
+        />
       </div>
       <Search />
       <ReviewList />
