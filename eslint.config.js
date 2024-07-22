@@ -11,4 +11,9 @@ export default [
   pluginJs.configs.recommended,
   ...tseslint.configs.recommended,
   ...fixupConfigRules(pluginReactConfig),
+  {
+    rules: {
+      'react/react-in-jsx-scope': 'off', // React 17 이상에서는 이 규칙을 끌 수 있습니다.
+    },
+  },
 ];
