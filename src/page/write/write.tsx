@@ -10,7 +10,7 @@ import TextField from '../../components/input/inputArea';
 import RecommandBtn from '../../components/button/iconButton';
 import FileUpload from '../../components/file/uploader';
 import MainButton from '../../components/button/mainButton';
-import AcademyModal from '../../components/Modal/academyList';
+import AcademyModal from '../../components/Modal/academyModal';
 import PopupAlert from '../../components/Alert/popupAlert';
 import ConfrimAlert from '../../components/Alert/completeAlert';
 import ListSearch from '../../components/search/listSearch';
@@ -49,7 +49,7 @@ function Dashboard() {
         <div className="leading-10 my-10">
           <div className="flex flex-row items-center">
             <span className="w-40 font-bold"> 교육과정명</span>
-            <ListSearch state={true} />
+            <ListSearch state={false} />
             <button
               onClick={() => setModalOpen(!modalOpen)}
               className=" w-20 py-0 ml-2"
