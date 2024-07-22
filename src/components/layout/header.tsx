@@ -5,11 +5,11 @@ import {
   IoIosArrowForward,
   IoIosArrowUp,
 } from 'react-icons/io';
-import { GoogleOAuthProvider } from '@react-oauth/google';
-import useGoogleLogin from '../../components/login/googleLogin';
+import GoogleLogin from '../../components/login/googleLogin';
 
 function Dashboard() {
   const navigate = useNavigate();
+  const IsLogin = localStorage.getItem('login');
   const [login, setLogin] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID;
@@ -19,30 +19,29 @@ function Dashboard() {
   const handleMyPageClick = () => {
     navigate('/mypage');
   };
-  const handleSuccess = (response) => {
-    console.log('Login Success:', response);
-    // 여기서 백엔드로 JWT 토큰을 전송하거나, 로그인 상태를 관리하는 작업을 수행합니다.
-  };
+  // const handleSuccess = (response) => {
+  //   console.log('Login Success:', response);
+  //   // 여기서 백엔드로 JWT 토큰을 전송하거나, 로그인 상태를 관리하는 작업을 수행합니다.
+  // };
 
-  const handleError = (error) => {
-    console.error('Login Failed:', error);
-  };
-  const GoogleLoginButton = useGoogleLogin(handleSuccess, handleError);
+  // const handleError = (error) => {
+  //   console.error('Login Failed:', error);
+  // };
+  // const GoogleLoginButton = useGoogleLogin(handleSuccess, handleError);
   return (
     <div className="flex flex-row w-screen justify-between px-56  my-16">
-      <span className="flex items-center">Logo</span>
+      <span
+        className="flex items-center"
+        onClick={() => navigate('/dashborad')}
+      >
+        Logo
+      </span>
       <span>
-        {login ? (
-          <span>로그인</span>
+        {!IsLogin ? (
+          <GoogleLogin />
         ) : (
           <span>
             <span className="flex flex-row items-center">
-              <GoogleOAuthProvider clientId={clientId}>
-                <div className="App">
-                  <h1>Google Login with React</h1>
-                  <GoogleLoginButton />
-                </div>
-              </GoogleOAuthProvider>
               <img
                 src={'../../../image/basicImg.png'}
                 alt={''}
