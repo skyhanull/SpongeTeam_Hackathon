@@ -1,13 +1,14 @@
-import React from 'react';
-import Button from '@mui/material/Button';
-
 type MainButtonProps = {
   text: string;
+  click: () => void;
 };
 
-function MainButton({ text }: MainButtonProps) {
+function MainButton({ text, click }: MainButtonProps) {
   return (
-    <button className="bg-customBlue py-4 px-6  text-white rounded-full font-bold  ">
+    <button
+      className="bg-customBlue py-4 px-6  text-white rounded-full font-bold  "
+      onClick={click}
+    >
       {text}
     </button>
   );

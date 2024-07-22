@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Fab } from '@mui/material';
 // import { ArrowUpward } from '@mui/icons-material';
 import { FaArrowUp } from 'react-icons/fa6';
-import { IoArrowUpCircle } from 'react-icons/io5';
 const ScrollToTop = () => {
   const [visible, setVisible] = useState(false);
 
