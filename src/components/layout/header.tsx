@@ -10,9 +10,12 @@ import useGoogleLogin from '../../components/login/googleLogin';
 
 function Dashboard() {
   const navigate = useNavigate();
-  const [login, setLogin] = useState('');
+  const [login, setLogin] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-  // const clientId = process.env.REACT_APP_GOOGLE_CLIENT_ID && '';
+  const clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID;
+  if (!clientId) {
+    throw new Error('VITE_GOOGLE_CLIENT_ID is not defined');
+  }
   const handleMyPageClick = () => {
     navigate('/mypage');
   };
@@ -34,11 +37,7 @@ function Dashboard() {
         ) : (
           <span>
             <span className="flex flex-row items-center">
-              <GoogleOAuthProvider
-                clientId={
-                  '991237371818-rva7ld7gnbh4l853mqllcqevmcgoldke.apps.googleusercontent.com'
-                }
-              >
+              <GoogleOAuthProvider clientId={clientId}>
                 <div className="App">
                   <h1>Google Login with React</h1>
                   <GoogleLoginButton />
