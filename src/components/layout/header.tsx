@@ -34,7 +34,7 @@ function Dashboard() {
         className="flex items-center"
         onClick={() => navigate('/dashborad')}
       >
-        Logo
+        <img src="../../../image/logo.png" alt={''} className="w-36" />
       </span>
       <span>
         {!IsLogin ? (

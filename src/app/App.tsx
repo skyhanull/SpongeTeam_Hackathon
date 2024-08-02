@@ -19,6 +19,7 @@ const loading = (
 const Dashboard = React.lazy(() => import('../page/dashboard/dashboard'));
 const MyPage = React.lazy(() => import('../page/mypage/mypage'));
 const WritePage = React.lazy(() => import('../page/write/write'));
+const Loading = React.lazy(() => import('../page/dashboard/google'));
 
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -49,6 +50,14 @@ const App = () => {
               element={
                 // <PrivateRoute authenticated={isAuthenticated}>
                 <WritePage />
+                // </PrivateRoute>
+              }
+            />
+            <Route
+              path="/loading"
+              element={
+                // <PrivateRoute authenticated={isAuthenticated}>
+                <Loading />
                 // </PrivateRoute>
               }
             />

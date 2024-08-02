@@ -7,4 +7,13 @@ export default defineConfig({
   build: {
     outDir: 'dist', // 빌드 출력 디렉토리
   },
+  server: {
+    proxy: {
+      '/oauth2': {
+        target: 'http://localhost:8080',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/oauth2/, '/oauth2'),
+      },
+    },
+  },
 });
