@@ -1,4 +1,4 @@
-import React, { Suspense, useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   IoIosArrowDown,
@@ -10,12 +10,12 @@ import GoogleLogin from '../../components/login/googleLogin';
 function Dashboard() {
   const navigate = useNavigate();
   const IsLogin = localStorage.getItem('login');
-  const [login, setLogin] = useState(false);
+  // const [login, setLogin] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-  const clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID;
-  if (!clientId) {
-    throw new Error('VITE_GOOGLE_CLIENT_ID is not defined');
-  }
+  // const clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID;
+  // if (!clientId) {
+  //   throw new Error('VITE_GOOGLE_CLIENT_ID is not defined');
+  // }
   const handleMyPageClick = () => {
     navigate('/mypage');
   };
